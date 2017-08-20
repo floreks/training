@@ -4,6 +4,10 @@ type Stack struct {
 	s []int
 }
 
+func (self *Stack) IsEmpty() bool {
+	return self.Size() == 0
+}
+
 func (self *Stack) Size() int {
 	return len(self.s)
 }

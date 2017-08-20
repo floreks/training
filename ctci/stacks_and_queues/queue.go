@@ -1,38 +1,38 @@
 package stacks_and_queues
 
 type StackQueue struct {
-	new, old *Stack
+	newStack, oldStack *Stack
 }
 
 func (self *StackQueue) Size() int {
-	return self.new.Size() + self.old.Size()
+	return self.newStack.Size() + self.oldStack.Size()
 }
 
 func (self *StackQueue) Add(val int) {
-	self.new.Push(val)
+	self.newStack.Push(val)
 }
 
 func (self *StackQueue) Peek() int {
 	self.rollStacks()
-	return self.old.Peek()
+	return self.oldStack.Peek()
 }
 
 func (self *StackQueue) Remove() int {
 	self.rollStacks()
-	return self.old.Pop()
+	return self.oldStack.Pop()
 }
 
 func (self *StackQueue) rollStacks() {
-	if self.old.Size() == 0 {
-		for self.new.Size() > 0 {
-			self.old.Push(self.new.Pop())
+	if self.oldStack.Size() == 0 {
+		for self.newStack.Size() > 0 {
+			self.oldStack.Push(self.newStack.Pop())
 		}
 	}
 }
 
 func NewStackQueue() *StackQueue {
 	return &StackQueue{
-		old: NewStack(),
-		new: NewStack(),
+		oldStack: NewStack(),
+		newStack: NewStack(),
 	}
 }
