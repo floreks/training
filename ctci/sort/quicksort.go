@@ -36,14 +36,14 @@ func partition(arr []int, l, h int) int {
 			j--
 		}
 
-		// If indexes not overlap swap elements
-		if i < j {
-			arr[i], arr[j] = arr[j], arr[i]
-			i++
-			j--
-		} else {
+		// If indexes overlap return end index
+		if i >= j {
 			return j
 		}
+
+		arr[i], arr[j] = arr[j], arr[i]
+		i++
+		j--
 	}
 
 	return -1
