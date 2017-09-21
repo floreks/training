@@ -26,12 +26,12 @@ func partition(arr []int, l, h int) int {
 	i, j := l, h
 
 	for true {
-		// Look for value bigger than x from the left
+		// Look for value lower than x from the left
 		for arr[i] < x {
 			i++
 		}
 
-		// Look for value lower than x from the right
+		// Look for value bigger than x from the right
 		for arr[j] > x {
 			j--
 		}
